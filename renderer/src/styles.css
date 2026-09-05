@@ -1,0 +1,235 @@
+:root {
+  --bg: #0f1720;
+  --panel: #16212e;
+  --panel-2: #1d2a3a;
+  --line: #2a3a4d;
+  --text: #e8eef5;
+  --muted: #91a3b8;
+  --accent: #14b8a6;
+  --accent-2: #0ea5e9;
+  --warn: #f59e0b;
+  --err: #ef4444;
+  --ok: #22c55e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+h1 {
+  font-size: 18px;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+header .sub {
+  color: var(--muted);
+  font-size: 12px;
+}
+nav {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+main {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 18px 24px;
+}
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.card h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+button {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #04201d;
+}
+button.blue {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #04202b;
+}
+button.danger {
+  background: var(--err);
+  border-color: var(--err);
+  color: #2a0606;
+}
+button.ghost.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+input,
+textarea {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 13px;
+  width: 100%;
+  font-family: inherit;
+}
+label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.stats {
+  display: flex;
+  gap: 22px;
+}
+.stat b {
+  display: block;
+  font-size: 20px;
+}
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.progress {
+  height: 8px;
+  background: var(--panel-2);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.3s;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+th {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+}
+.tablewrap {
+  max-height: 340px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.badge {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.badge.pending {
+  background: #24313f;
+  color: var(--muted);
+}
+.badge.processing {
+  background: #3a2f11;
+  color: var(--warn);
+}
+.badge.success {
+  background: #10331e;
+  color: var(--ok);
+}
+.badge.error {
+  background: #3a1414;
+  color: var(--err);
+}
+.logs {
+  background: #0a1017;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  height: 240px;
+  overflow: auto;
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.logs .error {
+  color: var(--err);
+}
+.logs .warn {
+  color: var(--warn);
+}
+.logs .success {
+  color: var(--ok);
+}
+.logs .time {
+  color: #5a6b7e;
+  margin-right: 8px;
+}
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 6px 0 0;
+}

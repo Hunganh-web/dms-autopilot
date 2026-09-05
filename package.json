@@ -1,5 +1,5 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "dms-auto-tool",
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -9,7 +9,13 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "electron:renderer:dev": "vite --config vite.electron.config.ts",
+    "electron:renderer:build": "vite build --config vite.electron.config.ts",
+    "electron:main": "ELECTRON_RENDERER_URL=http://localhost:5599 electron .",
+    "electron:dev": "concurrently -k \"npm:electron:renderer:dev\" \"wait-on tcp:5599 && npm run electron:main\"",
+    "electron:build": "npm run electron:renderer:build && electron-builder --mac",
+    "postinstall:browsers": "playwright install chromium"
   },
   "overrides": {
     "rolldown": "1.2.1"
@@ -66,7 +72,9 @@
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
-    "zod": "^3.25.76"
+    "zod": "^3.25.76",
+    "playwright": "^1.50.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
@@ -85,6 +93,57 @@
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "8.1.5"
+    "vite": "8.1.5",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "concurrently": "^9.1.0",
+    "wait-on": "^8.0.1"
+  },
+  "productName": "DMS Auto Tool",
+  "version": "1.0.0",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.dms.autotool",
+    "productName": "DMS Auto Tool",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "dist-electron/renderer/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "config.json",
+        "to": "config.json"
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/playwright/**",
+      "node_modules/playwright-core/**"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "category": "public.app-category.productivity",
+      "identity": null
+    }
   }
 }
