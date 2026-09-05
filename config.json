@@ -1,0 +1,37 @@
+{
+  "dmsUrl": "https://dms.vinfast.vn/",
+  "newFormUrl": "",
+  "openNewFormSelector": "button:has-text(\"Tạo mới\")",
+  "selectors": {
+    "fullName": "input[name='fullName']",
+    "phone": "input[name='phone']",
+    "idCard": "input[name='idCard']",
+    "carModel": "div[role='combobox'][data-field='carModel']",
+    "carModelOption": "div[role='option']:has-text(\"{value}\")",
+    "resource": "div[role='combobox'][data-field='resource']",
+    "resourceOption": "div[role='option']:has-text(\"{value}\")",
+    "saveAndClose": "button:has-text(\"Lưu & đóng\")",
+    "formClosed": "table[data-list='registrations']",
+    "formOpen": "form[data-form='registration']",
+    "errorMessage": ".Toastify__toast--error, .ant-message-error, [role='alert']"
+  },
+  "excelColumns": {
+    "fullName": "Họ và tên",
+    "phone": "Số điện thoại",
+    "idCard": "CCCD/GPLX",
+    "carModel": "Dòng xe lái thử"
+  },
+  "carToResource": {
+    "VF3": "Nguồn lực VF3",
+    "VF5": "Nguồn lực VF5",
+    "VF6": "Nguồn lực VF6",
+    "VF7": "Nguồn lực VF7",
+    "VF8": "Nguồn lực VF8"
+  },
+  "timeouts": {
+    "action": 15000,
+    "formClose": 20000,
+    "stabilize": 1500
+  },
+  "browserChannel": "chrome"
+}
