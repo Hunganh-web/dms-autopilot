@@ -1,19 +1,33 @@
 {
-  "dmsUrl": "https://dms.vinfast.vn/",
-  "newFormUrl": "",
-  "openNewFormSelector": "button:has-text(\"Tạo mới\")",
+  "dmsUrl": "https://vinfastdms.crm5.dynamics.com/main.aspx?appid=fe639354-1bad-ed11-9886-000d3a85c2a2&forceUCI=1&pagetype=entityrecord&etn=bookableresourcebooking",
+  "newFormUrl": "https://vinfastdms.crm5.dynamics.com/main.aspx?appid=fe639354-1bad-ed11-9886-000d3a85c2a2&forceUCI=1&pagetype=entityrecord&etn=bookableresourcebooking",
+  "openNewFormSelector": "",
+  "run": {
+    "startDate": "",
+    "startTime": "10:30",
+    "durationMinutes": 30,
+    "surveyIdQuery": "te",
+    "surveyIdExpected": "Test Drive"
+  },
   "selectors": {
-    "fullName": "input[name='fullName']",
-    "phone": "input[name='phone']",
-    "idCard": "input[name='idCard']",
-    "carModel": "div[role='combobox'][data-field='carModel']",
-    "carModelOption": "div[role='option']:has-text(\"{value}\")",
-    "resource": "div[role='combobox'][data-field='resource']",
-    "resourceOption": "div[role='option']:has-text(\"{value}\")",
-    "saveAndClose": "button:has-text(\"Lưu & đóng\")",
-    "formClosed": "table[data-list='registrations']",
-    "formOpen": "form[data-form='registration']",
-    "errorMessage": ".Toastify__toast--error, .ant-message-error, [role='alert']"
+    "fullName": "input[data-id=\"itv_name.fieldControl-text-box-text\"]",
+    "phone": "input[data-id=\"itv_phone.fieldControl-text-box-text\"]",
+    "idCard": "input[data-id=\"itv_externalcustomerid.fieldControl-text-box-text\"]",
+    "surveyIdInput": "input[aria-label^=\"Survey ID\"][role=\"combobox\"]",
+    "surveyIdSelectedText": "div[data-id$=\"_selected_tag_text\"][title]",
+    "resourceInput": "input[data-id=\"resource.fieldControl-LookupResultsDropdown_resource_textInputBox_with_filter_new\"]",
+    "resourceSelectedText": "div[data-id=\"resource.fieldControl-LookupResultsDropdown_resource_selected_tag_text\"]",
+    "lookupResultItem": "li[role=\"option\"], div[role=\"option\"]",
+    "startDateInput": "input[data-id=\"starttime.fieldControl-date-time-input\"]",
+    "startTimeInput": "input[data-id=\"starttime.fieldControl-time-input\"]",
+    "durationInput": "input[data-id=\"duration.fieldControl-duration-input\"], input[aria-label^=\"Khoảng thời gian\"]",
+    "schedulingTab": "li[aria-label=\"Scheduling\"], button[aria-label=\"Scheduling\"], li[title=\"Scheduling\"]",
+    "estimatedArrivalDateInput": "input[data-id=\"msdyn_estimatedarrivaltime.fieldControl-date-time-input\"]",
+    "estimatedArrivalTimeInput": "input[data-id=\"msdyn_estimatedarrivaltime.fieldControl-time-input\"]",
+    "saveAndClose": "button[data-id=\"bookableresourcebooking|NoRelationship|Form|Mscrm.Form.bookableresourcebooking.SaveAndClose\"]",
+    "formOpen": "input[data-id=\"itv_name.fieldControl-text-box-text\"]",
+    "formClosed": "div[data-id=\"grid-container\"], div[data-lp-id*=\"MscrmControls.Grid\"]",
+    "errorMessage": "div[role=\"alert\"], div[data-id=\"errorDialog\"], div[data-id*=\"dialogMessageText\"]"
   },
   "excelColumns": {
     "fullName": "Họ và tên",
@@ -22,15 +36,16 @@
     "carModel": "Dòng xe lái thử"
   },
   "carToResource": {
-    "VF3": "Nguồn lực VF3",
-    "VF5": "Nguồn lực VF5",
-    "VF6": "Nguồn lực VF6",
-    "VF7": "Nguồn lực VF7",
-    "VF8": "Nguồn lực VF8"
+    "VF3": "VF 3",
+    "VF5": "VF 5",
+    "VF6": "VF 6",
+    "VF7": "VF 7",
+    "VF8": "VF 8",
+    "VF9": "VF 9"
   },
   "timeouts": {
-    "action": 15000,
-    "formClose": 20000,
+    "action": 20000,
+    "formClose": 25000,
     "stabilize": 1500
   },
   "browserChannel": "chrome"
